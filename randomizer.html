@@ -1,0 +1,35 @@
+<html ng-app='GISHWHES' ng-controller='randomizer'>
+    <head>
+        <title> GISHWHES Randomizer!!! </title>
+        <script type='application/ecmascript' src='https://code.jquery.com/jquery-2.1.4.js'> </script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script type='application/ecmascript' src='/Gishwhes 2015/Item 86/randomizer.js'> </script>
+        <link rel='stylesheet' type='text/css' href='/Gishwhes 2015/Item 86/randomizer.css' />
+    </head>
+    <body>
+        <h1> GISHWHES Randomizer!!! </h1>
+        <table> <tr>
+            <td width=110px>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='backward("head")'>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='backward("body")'>
+            </td>
+            <td width=100%>
+                <div id=wrap>
+                    <div id=canvas>
+                        <img class=canvas_element ng-style='{"margin-left": images.head.x() + "px", "margin-top": images.head.y() + "px", "z-index": 2}' width='{{ images.head.width() + "px" }}' ng-src='{{ current("head").src }}'>
+                        <img class=canvas_element ng-style='{"margin-left": images.body.x() + "px", "margin-top": images.body.y() + "px", "z-index": 1}' width='{{ current("body").width + "px" }}' ng-src='{{ current("body").src }}'>
+                    </div>
+                </div>
+
+                <div id=shuffle ng-click='shuffle()' align=center>
+                    <img src='/Gishwhes 2015/Item 86/shuffle.svg' height='50px' />
+                </div>
+            </td>
+            <td width=110px>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='forward("head")'>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='forward("body")'>
+            </td>
+        </tr> </table>
+        <h1> GISHWHES Randomizer!!! </h1>
+    </body>
+</html>

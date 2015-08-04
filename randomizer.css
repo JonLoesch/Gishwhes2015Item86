@@ -1,0 +1,18 @@
+body, html {
+    margin:0;
+    padding:0;
+}
+
+#wrap {
+    width: 500px;
+    height: 500px;
+    background-color: lightblue;
+    display: block;
+    margin: 0 auto;
+}
+#canvas {
+    position: absolute
+}
+.canvas_element {
+    position:absolute;
+}
