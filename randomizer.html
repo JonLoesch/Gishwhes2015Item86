@@ -16,13 +16,15 @@
             <td width=100%>
                 <div id=wrap>
                     <div id=canvas>
-                        <img class=canvas_element ng-style='{"margin-left": images.head.x() + "px", "margin-top": images.head.y() + "px", "z-index": 2}' width='{{ images.head.width() + "px" }}' ng-src='{{ current("head").src }}'>
-                        <img class=canvas_element ng-style='{"margin-left": images.body.x() + "px", "margin-top": images.body.y() + "px", "z-index": 1}' width='{{ current("body").width + "px" }}' ng-src='{{ current("body").src }}'>
+                        <img class=canvas_element ng-style='{"left": images.head.x() + "px", "top": images.head.y() + "px", "z-index": 2}' width='{{ images.head.width() + "px" }}' ng-src='{{ current("head").src }}'>
+                        <img class=canvas_element ng-style='{"left": images.body.x() + "px", "top": images.body.y() + "px", "z-index": 1}' width='{{ current("body").width + "px" }}' ng-src='{{ current("body").src }}'>
                     </div>
                 </div>
 
                 <div id=shuffle ng-click='shuffle()' align=center>
+                    {{ current('body').name.first + current('head').name.last }}
                     <img src='/Gishwhes 2015/Item 86/shuffle.svg' height='50px' />
+                     (or {{ current('head').name.first + current('body').name.last }})
                 </div>
             </td>
             <td width=110px>

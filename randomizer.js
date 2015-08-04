@@ -8,16 +8,13 @@ app.controller('randomizer', function($scope) {
                 {
                     src: '/Gishwhes 2015/Item 86/head_0.png',
                     aspect: 545/793,
-                    neck: {x: 0, y: 1, width: .60},
+                    name: {first: 'rat', last: 'rat'},
+                    neck: {x: -.02, y: 1, width: .60},
                 },
-                // {
-                //     src: '/Gishwhes 2015/Item 86/head_1.png',
-                //     aspect: 545/793,
-                //     neck: {x: 0, y: 1, width: .60},
-                // },
                 {
                     src: '/Gishwhes 2015/Item 86/head_2.png',
                     aspect: 94/122,
+                    name: {first: 'wolf', last: 'wolf'},
                     neck: {x: .25, y: 1, width: .45},
                 },
             ],
@@ -31,9 +28,6 @@ app.controller('randomizer', function($scope) {
                 return $scope.current("head").aspect * $scope.images.head.width();
             },
             y: function() {
-                // return $scope.images.body.y() - $scope.images.head.height();
-                console.log($scope.images.body.y() , $scope.current('body').neck.y , $scope.images.body.height() , $scope.images.head.height() , (1 - $scope.current('head').neck.y));
-                console.log($scope.images.body.y() + $scope.current('body').neck.y * $scope.images.body.height() - $scope.images.head.height() * (1 - $scope.current('head').neck.y));
                 return $scope.images.body.y() + $scope.current('body').neck.y * $scope.images.body.height() - $scope.images.head.height() * $scope.current('head').neck.y;
             },
         },
@@ -45,20 +39,15 @@ app.controller('randomizer', function($scope) {
                     aspect: 753/1625,
                     width: 300,
                     base: 50,
+                    name: {first: 'fog', last: 'fog'},
                     neck: {x: .50, y: 0, width: .30},
                 },
-                // {
-                //     src: '/Gishwhes 2015/Item 86/body_1.png',
-                //     aspect: 753/1625,
-                //     width: 300,
-                //     base: 50,
-                //     neck: {x: .50, y: 0, width: .30},
-                // },
                 {
                     src: '/Gishwhes 2015/Item 86/body_2.png',
                     aspect: 297/298,
                     width: 300,
                     base: 50,
+                    name: {first: 'cock', last: 'cock'},
                     neck: {x: .69, y: .39, width: .19},
                 },
             ],
