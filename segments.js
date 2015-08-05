@@ -2,6 +2,10 @@ function Anchor(p, v) {
     this.p = p;
     this.v = v;
 }
+Anchor.fromString = function(str) {
+    var comps = str.split(/ +/);
+    return new Anchor(new Victor(parseFloat(comps[0]), parseFloat(comps[1])), new Victor(parseFloat(comps[2]), parseFloat(comps[3])));
+};
 // Anchor.prototype.p = function() { return this.p; };
 // Anchor.prototype.v = function() { return this.v; };
 

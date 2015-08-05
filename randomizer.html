@@ -15,14 +15,18 @@
         </h2>
         <table> <tr>
             <td width=110px>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-left-md.svg' ng-click='components.hat.backward()'>
+                <br /> <br /> <br /> <br /> <br />
                 <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-left-md.svg' ng-click='components.head.backward()'>
+                <br /> <br /> <br /> <br /> <br />
                 <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-left-md.svg' ng-click='components.body.backward()'>
             </td>
             <td width=100%>
                 <div id=wrap>
                     <div id=canvas>
-                        <div segment-display component='components.head' transform-func='headTr()' zindex='1'> </div>
                         <div segment-display component='components.body' transform-func='bodyTr()' zIndex='2'> </div>
+                        <div segment-display component='components.head' transform-func='headTr()' zindex='1'> </div>
+                        <div segment-display component='components.hat' transform-func='hatTr()' zindex='3'> </div>
                     </div>
                 </div>
 
@@ -33,7 +37,10 @@
                 </div>
             </td>
             <td width=110px>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-right-md.svg' ng-click='components.hat.forward()'>
+                <br /> <br /> <br /> <br /> <br />
                 <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-right-md.svg' ng-click='components.head.forward()'>
+                <br /> <br /> <br /> <br /> <br />
                 <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-right-md.svg' ng-click='components.body.forward()'>
             </td>
         </tr> </table>

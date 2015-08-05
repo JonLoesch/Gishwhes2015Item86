@@ -1,33 +1,19 @@
 var app = angular.module('GISHWHES', []);
 app.controller('randomizer', function($scope) {
     $scope.components = {
-        head: new Set([
+        hat: new Set([
             new Segment({
-                src: '/Gishwhes 2015/Item 86/giranimals/head1.png',
-                aspect: 833/1000,
-                base: new Anchor(new Victor(-0.297,.103842), new Victor(.548, .18)),
+                src: '/Gishwhes 2015/Item 86/giranimals/hat4.png',
+                aspect: 778/1000,
+                base: Anchor.fromString('-0.297 0.205655527 0.588   0.00,570694'),
                 docks: {},
             }),
             new Segment({
-                src: '/Gishwhes 2015/Item 86/giranimals/head6.png',
-                aspect: 833/1000,
-                base: new Anchor(new Victor(-0.359,.5), new Victor(0.62, 0)),
+                src: '/Gishwhes 2015/Item 86/giranimals/hat1.png',
+                aspect: 625/1000,
+                base: new Anchor(new Victor(-0.25, .1896), new Victor(0.496, -0.1008)),
                 docks: {},
             }),
-            // new Segment({
-            //     src: '/Gishwhes 2015/Item 86/head_0.png',
-            //     aspect: 545/793,
-            //     base: new Anchor(new Victor(-.52, .5), new Victor(.72, 0)),
-            //     docks: {},
-            // }),
-            // new Segment({
-            //     src: '/Gishwhes 2015/Item 86/head_2.png',
-            //     aspect: 94/122,
-            //     base: new Anchor(new Victor(-.25, .5), new Victor(.45 *72/60, 0)),
-            //     docks: {},
-            // }),
-        ]),
-        body: new Set([
             // giranimals/hat1.png:  PNG image data, 1000 x 625, 8-bit/color RGBA, non-interlaced
             // giranimals/hat2.png:  PNG image data, 1000 x 1000, 8-bit/color RGBA, non-interlaced
             // giranimals/hat3.png:  PNG image data, 1000 x 573, 8-bit/color RGBA, non-interlaced
@@ -35,6 +21,20 @@ app.controller('randomizer', function($scope) {
             // giranimals/hat5.png:  PNG image data, 1000 x 591, 8-bit/color RGBA, non-interlaced
             // giranimals/hat6.png:  PNG image data, 1000 x 912, 8-bit/color RGBA, non-interlaced
             // giranimals/hat7.png:  PNG image data, 1000 x 673, 8-bit/color RGBA, non-interlaced
+        ]),
+        head: new Set([
+            new Segment({
+                src: '/Gishwhes 2015/Item 86/giranimals/head1.png',
+                aspect: 833/1000,
+                base: new Anchor(new Victor(-0.297,.103842), new Victor(.548, .18)),
+                docks: {scalp: new Anchor(new Victor(-.119, -0.431572629), new Victor(.323, .009603842))},
+            }),
+            new Segment({
+                src: '/Gishwhes 2015/Item 86/giranimals/head6.png',
+                aspect: 833/1000,
+                base: new Anchor(new Victor(-0.359,.5), new Victor(0.62, 0)),
+                docks: {scalp: new Anchor(new Victor(-0.238, -0.2203125), new Victor(0.373, 0.02109375))},
+            }),
             // giranimals/head1.png: PNG image data, 1000 x 833, 8-bit/color RGBA, non-interlaced
             // giranimals/head2.png: PNG image data, 1000 x 1389, 8-bit/color RGBA, non-interlaced
             // giranimals/head3.png: PNG image data, 1000 x 836, 8-bit/color RGBA, non-interlaced
@@ -43,6 +43,8 @@ app.controller('randomizer', function($scope) {
             // giranimals/head6.png: PNG image data, 1000 x 1280, 8-bit/color RGBA, non-interlaced
             // giranimals/head7.png: PNG image data, 1000 x 873, 8-bit/color RGBA, non-interlaced
             // giranimals/head8.png: PNG image data, 1000 x 715, 8-bit/color RGBA, non-interlaced
+        ]),
+        body: new Set([
 
             
             new Segment({
@@ -104,8 +106,14 @@ app.controller('randomizer', function($scope) {
                 $scope.bodyTr().onAnchor($scope.components.body.current().docks.neck),
                 $scope.components.head.current().aspect);
     }
+    $scope.hatTr = function() {
+        return Transform.solve($scope.components.hat.current().base, 
+                $scope.headTr().onAnchor($scope.components.head.current().docks.scalp),
+                $scope.components.hat.current().aspect);
+    }
 
     $scope.shuffle = function() {
+        $scope.components.hat.shuffle();
         $scope.components.head.shuffle();
         $scope.components.body.shuffle();
     }
