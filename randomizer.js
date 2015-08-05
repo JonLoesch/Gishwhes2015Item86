@@ -36,16 +36,17 @@ app.controller('randomizer', function($scope) {
         platform: new Anchor(new Victor(100, 450), new Victor(300, 0)),
     };
     $scope.bodyTr = function() {
-        return Transform.solve($scope.components.body.current().base, $scope.components.platform);
+        return Transform.solve($scope.components.body.current().base, $scope.components.platform, $scope.components.body.current().aspect);
     };
     $scope.headTr = function() {
-        return $scope.bodyTr().onTr(
-            Transform.solve($scope.components.head.current().base, $scope.components.body.current().docks.neck)
-        );
+        return Transform.solve($scope.components.head.current().base, 
+                $scope.bodyTr().onAnchor($scope.components.body.current().docks.neck),
+                $scope.components.head.current().aspect);
     }
 
     $scope.shuffle = function() {
-        console.log($scope.bodyTr());
+        $scope.components.head.shuffle();
+        $scope.components.body.shuffle();
     }
 });
 app.directive('segmentDisplay', function() {

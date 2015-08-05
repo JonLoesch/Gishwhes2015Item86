@@ -5,21 +5,22 @@ function Anchor(p, v) {
 // Anchor.prototype.p = function() { return this.p; };
 // Anchor.prototype.v = function() { return this.v; };
 
-function Transform(translate, scale, rotate) {
-    this.translate = translate;
-    this.scale = scale;
-    this.rotate = rotate;
+function Transform(q_x, q_y, q_z) {
+    this.q_x = q_x;
+    this.q_y = q_y;
+    this.q_z = q_z;
 };
 Transform.prototype.onAnchor = function(a) {
     return new Anchor(this.onPoint(a.p), this.onVector(a.v));
 };
 Transform.prototype.onPoint = function(p) {
-    return this.onVector(p).add(this.translate);
+    return this.onVector(p).add(this.q_z);
 };
 Transform.prototype.onVector = function(v) {
-    return v.clone().multiply(new Victor(this.scale, this.scale)).rotate(this.rotate);
+    return this.q_x.clone().multiply(new Victor(v.x, v.x)).add(this.q_y.clone().multiply(new Victor(v.y, v.y)));
 };
 Transform.prototype.onTr = function(tr) {
+    return new Transform(this.onVector(tr.q_x), this.onVector(tr.q_y), this.onPoint(tr.q_z));
     var test = new Anchor(new Victor(0, 0), new Victor(1, 0));
     var r = this.onAnchor(test);
     console.log(this.onAnchor(tr.onAnchor(test)));
@@ -28,24 +29,36 @@ Transform.prototype.onTr = function(tr) {
     return result;
 };
 Transform.prototype.getStyle = function() {
-    var rotateStr = 'rotate(' + (this.rotate * 180 / 3.1415) + 'deg)';
     var xUnit = this.onVector(new Victor(1, 0));
     var yUnit = this.onVector(new Victor(0, 1));
     var trString = 'matrix(' +
-        xUnit.x + ',' + xUnit.y + ',' +
-        yUnit.x + ',' + yUnit.y + ',' +
-        this.translate.x + ',' + this.translate.y + ')';
+        this.q_x.x + ',' + this.q_x.y + ',' +
+        this.q_y.x + ',' + this.q_y.y + ',' +
+        this.q_z.x + ',' + this.q_z.y + ')';
     return {
         '-ms-transform': trString, /* IE 9 */
         '-webkit-transform': trString, /* Chrome, Safari, Opera */
         'transform': trString,
     }
 };
-Transform.solve = function(fromAnchor, toAnchor) {
-    var rotate = toAnchor.v.angle() - fromAnchor.v.angle();
+Transform.scale = function(xScalar, yScalar) {
+    return new Transform(new Victor(xScalar, 0), new Victor(0, yScalar), new Victor(0, 0));
+};
+Transform.rotate = function(angle) {
+    var s = Math.sin(angle);
+    var c = Math.cos(angle);
+    return new Transform(new Victor(c, s), new Victor(-s, c), new Victor(0, 0));
+};
+Transform.solve = function(fromAnchor, toAnchor, aspect) {
+    var scale = Transform.scale(1, aspect);
+    return Transform.solveWithoutAspect(scale.onAnchor(fromAnchor), toAnchor).onTr(scale);
+};
+Transform.solveWithoutAspect = function(fromAnchor, toAnchor) {
+    var rotate = Transform.rotate(toAnchor.v.angle() - fromAnchor.v.angle());
     var scale = Math.sqrt(toAnchor.v.lengthSq() / fromAnchor.v.lengthSq());
-    var notQuite = new Transform(new Victor(0, 0), scale, rotate);
-    return new Transform(notQuite.onPoint(fromAnchor.p).subtract(toAnchor.p).invert(), scale, rotate);
+    var notQuite = rotate.onTr(Transform.scale(scale, scale));
+    notQuite.q_z = notQuite.onPoint(fromAnchor.p).subtract(toAnchor.p).invert();
+    return notQuite;
 };
 
 /*
