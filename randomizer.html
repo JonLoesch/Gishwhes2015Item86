@@ -3,6 +3,8 @@
         <title> GISHWHES Randomizer!!! </title>
         <script type='application/ecmascript' src='https://code.jquery.com/jquery-2.1.4.js'> </script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <script type='application/ecmascript' src='/Gishwhes 2015/Item 86/victor-0.2.6/build/victor.js'> </script>
+        <script type='application/ecmascript' src='/Gishwhes 2015/Item 86/segments.js'> </script>
         <script type='application/ecmascript' src='/Gishwhes 2015/Item 86/randomizer.js'> </script>
         <link rel='stylesheet' type='text/css' href='/Gishwhes 2015/Item 86/randomizer.css' />
     </head>
@@ -16,8 +18,8 @@
             <td width=100%>
                 <div id=wrap>
                     <div id=canvas>
-                        <img class=canvas_element ng-style='{"left": images.head.x() + "px", "top": images.head.y() + "px", "z-index": 2}' width='{{ images.head.width() + "px" }}' ng-src='{{ current("head").src }}'>
-                        <img class=canvas_element ng-style='{"left": images.body.x() + "px", "top": images.body.y() + "px", "z-index": 1}' width='{{ current("body").width + "px" }}' ng-src='{{ current("body").src }}'>
+                        <!-- <div segment-display component='components.head' transform-func='headTr()' zindex='2'> </div> -->
+                        <div segment-display component='components.body' transform-func='bodyTr()' zIndex='1'> </div>
                     </div>
                 </div>
 

@@ -15,4 +15,6 @@ body, html {
 }
 .canvas_element {
     position:absolute;
+    width: 1px;
+    height: 1px;
 }
