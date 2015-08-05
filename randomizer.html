@@ -9,17 +9,20 @@
         <link rel='stylesheet' type='text/css' href='/Gishwhes 2015/Item 86/randomizer.css' />
     </head>
     <body>
-        <h1> GISHWHES Randomizer!!! </h1>
+        <h2 align=center>
+            <br/> <br/>
+            Greatest International Mascot Generator The World Has Ever Seen
+        </h2>
         <table> <tr>
             <td width=110px>
-                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='components.head.backward()'>
-                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='components.body.backward()'>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-left-md.svg' ng-click='components.head.backward()'>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-left-md.svg' ng-click='components.body.backward()'>
             </td>
             <td width=100%>
                 <div id=wrap>
                     <div id=canvas>
-                        <div segment-display component='components.head' transform-func='headTr()' zindex='2'> </div>
-                        <div segment-display component='components.body' transform-func='bodyTr()' zIndex='1'> </div>
+                        <div segment-display component='components.head' transform-func='headTr()' zindex='1'> </div>
+                        <div segment-display component='components.body' transform-func='bodyTr()' zIndex='2'> </div>
                     </div>
                 </div>
 
@@ -30,10 +33,9 @@
                 </div>
             </td>
             <td width=110px>
-                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='components.head.forward()'>
-                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/left.png' ng-click='components.body.forward()'>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-right-md.svg' ng-click='components.head.forward()'>
+                <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-right-md.svg' ng-click='components.body.forward()'>
             </td>
         </tr> </table>
-        <h1> GISHWHES Randomizer!!! </h1>
     </body>
 </html>

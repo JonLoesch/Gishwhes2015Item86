@@ -3,17 +3,29 @@ app.controller('randomizer', function($scope) {
     $scope.components = {
         head: new Set([
             new Segment({
-                src: '/Gishwhes 2015/Item 86/head_0.png',
-                aspect: 545/793,
-                base: new Anchor(new Victor(-.52, .5), new Victor(.72, 0)),
+                src: '/Gishwhes 2015/Item 86/giranimals/head1.png',
+                aspect: 833/1000,
+                base: new Anchor(new Victor(-0.297,.103842), new Victor(.548, .18)),
                 docks: {},
             }),
             new Segment({
-                src: '/Gishwhes 2015/Item 86/head_2.png',
-                aspect: 94/122,
-                base: new Anchor(new Victor(-.25, .5), new Victor(.45 *72/60, 0)),
+                src: '/Gishwhes 2015/Item 86/giranimals/head6.png',
+                aspect: 833/1000,
+                base: new Anchor(new Victor(-0.359,.5), new Victor(0.62, 0)),
                 docks: {},
             }),
+            // new Segment({
+            //     src: '/Gishwhes 2015/Item 86/head_0.png',
+            //     aspect: 545/793,
+            //     base: new Anchor(new Victor(-.52, .5), new Victor(.72, 0)),
+            //     docks: {},
+            // }),
+            // new Segment({
+            //     src: '/Gishwhes 2015/Item 86/head_2.png',
+            //     aspect: 94/122,
+            //     base: new Anchor(new Victor(-.25, .5), new Victor(.45 *72/60, 0)),
+            //     docks: {},
+            // }),
         ]),
         body: new Set([
             // giranimals/hat1.png:  PNG image data, 1000 x 625, 8-bit/color RGBA, non-interlaced
