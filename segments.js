@@ -74,7 +74,6 @@ console.log(tr.onAnchor(target));
 */
 
 function Segment(init) {
-    this.name   = init.name;
     this.src    = init.src;
     this.aspect = init.aspect;
     this.base   = init.base;
