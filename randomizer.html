@@ -1,6 +1,8 @@
 <html ng-app='GISHWHES' ng-controller='randomizer'>
     <head>
-        <title> GISHWHES Randomizer!!! </title>
+        <title>
+            Greatest International Mascot Generator The World Has Ever Seen
+        </title>
         <script type='application/ecmascript' src='https://code.jquery.com/jquery-2.1.4.js'> </script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script type='application/ecmascript' src='/Gishwhes 2015/Item 86/victor-0.2.6/build/victor.js'> </script>
@@ -9,10 +11,13 @@
         <link rel='stylesheet' type='text/css' href='/Gishwhes 2015/Item 86/randomizer.css' />
     </head>
     <body>
-        <h2 align=center>
-            <br/> <br/>
-            Greatest International Mascot Generator The World Has Ever Seen
-        </h2>
+        <div align=center>
+            <h2>
+                <br/> <br/>
+                Greatest International Mascot Generator The World Has Ever Seen
+                <br/>
+            </h2>
+            ({{components.head.size() * components.hat.size() * components.body.size()}} different combinations!)
         <table> <tr>
             <td width=110px>
                 <img class=button-left width=100px src='/Gishwhes 2015/Item 86/chevron-left-md.svg' ng-click='components.hat.backward()'>

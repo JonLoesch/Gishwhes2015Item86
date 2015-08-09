@@ -105,6 +105,9 @@ function Set(elems) {
     };
     this.shuffle = function() {
         currentIndex = Math.floor(Math.random() * elems.length);
-    }
-}
+    };
+    this.size = function() {
+        return elems.length;
+    };
+};
 
